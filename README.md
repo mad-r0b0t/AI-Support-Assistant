@@ -1,24 +1,63 @@
 # AI Support Assistant
 
-## Overview
-This project automates first-level IT support by analyzing incoming tickets and generating solution suggestions using an LLM.
+AI-powered IT support assistant integrated with Zammad.
 
 ## Features
-- Ticket classification (e.g. login issues, network problems)
-- Automated response generation
-- Integration with ticket systems (Zammad API)
-- Local or API-based LLM support
 
-## Tech Stack
-- Python (FastAPI)
-- REST APIs
-- Docker
-- LLM (Ollama / OpenAI)
+- Ticket ingestion via webhook
+- Ticket analysis using LLM
+- Knowledge retrieval (RAG)
+- Suggested replies for support agents
 
-## Use Case
-Reduces manual workload in IT support and speeds up ticket resolution.
+## Setup
 
-## Future Improvements
-- Auto-resolve simple tickets
-- Knowledge base integration
-- Active learning from resolved tickets
+### 1. Clone repo
+
+```bash
+git clone https://github.com/mad-r0b0t/Ai-Support-Assistant.git
+cd ai-support-assistant
+2. Install dependencies
+pip install -r requirements.txt
+3. Configure environment
+cp .env.example .env
+
+Edit .env
+
+4. Start server
+uvicorn app.main:app --reload --port 8000
+5. Configure Zammad webhook
+
+URL:
+
+http://your-server:8000/ticket
+
+Trigger:
+
+Ticket Created
+
+Future roadmap
+
+auto-reply
+
+ticket classification
+
+similarity search
+
+
+---
+
+# 📄 app/config.py
+
+```python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+OLLAMA_URL = os.getenv("OLLAMA_URL")
+LLM_MODEL = os.getenv("LLM_MODEL")
+
+ZAMMAD_URL = os.getenv("ZAMMAD_URL")
+ZAMMAD_TOKEN = os.getenv("ZAMMAD_TOKEN")
+
+VECTOR_DB_PATH = "./data/vectordb"
