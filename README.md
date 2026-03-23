@@ -13,18 +13,23 @@ AI-powered IT support assistant integrated with Zammad.
 
 ### 1. Clone repo
 
-```bash
 git clone https://github.com/mad-r0b0t/Ai-Support-Assistant.git
 cd ai-support-assistant
-2. Install dependencies
+
+### 2. Install dependencies
+
 pip install -r requirements.txt
-3. Configure environment
+
+### 3. Configure environment
+
 cp .env.example .env
 
 Edit .env
 
-4. Start server
+### 4. Start server
+
 uvicorn app.main:app --reload --port 8000
+
 5. Configure Zammad webhook
 
 URL:
@@ -48,7 +53,7 @@ similarity search
 
 # 📄 app/config.py
 
-```python
+
 import os
 from dotenv import load_dotenv
 
